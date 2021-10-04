@@ -10,6 +10,8 @@ export default function Form() {
 
     const { register, handleSubmit, watch, errors } = useForm<Inputs>();
 
+    console.log(watch());
+
     const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
     return (
