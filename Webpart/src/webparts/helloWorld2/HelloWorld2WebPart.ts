@@ -13,15 +13,31 @@ import { IHelloWorld2Props } from './components/IHelloWorld2Props';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+
 export interface IHelloWorld2WebPartProps {
   description: string;
   Title: string;
   phone: number;
   numberValue: number;
-  lists: string | string[]
+  lists: string;
 }
 
 export default class HelloWorld2WebPart extends BaseClientSideWebPart<IHelloWorld2WebPartProps> {
+
+  public onInit(): Promise<void> {
+
+    return super.onInit().then(_ => {
+
+      sp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
+
 
   public render(): void {
     const element: React.ReactElement<IHelloWorld2Props> = React.createElement(

@@ -3,6 +3,6 @@ export interface IHelloWorld2Props {
   Title: string;
   phone: number;
   numberValue: number;
-  lists: string | string[];
+  lists: string;
 }
 
