@@ -16,7 +16,7 @@ export interface IHelloWordStates {
   idade: string,
 }
 
-export default class HelloWorld extends React.Component<IHelloWorld2Props, IHelloWordStates, {}> {
+export default class HelloWorld2 extends React.Component<IHelloWorld2Props, IHelloWordStates, {}> {
 
   constructor(props) {
     super(props);

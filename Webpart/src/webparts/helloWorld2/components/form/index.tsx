@@ -17,6 +17,14 @@ export default function Form() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
+                <label htmlFor="exampleInputFirstName1" className="form-label">First name</label>
+                <input ref={register({ required: true, maxLength: 20 })} name="First name" type="name" className="form-control" id="exampleInputFirstName1"></input>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputLastName1" className="form-label">Last name</label>
+                <input ref={register({ required: true, maxLength: 50 })} name="First name" type="name" className="form-control" id="exampleInputFirstName1"></input>
+            </div>
+            <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input ref={register} name="Title" type="text" className="form-control" id="exampleInputEmail1" />
                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
