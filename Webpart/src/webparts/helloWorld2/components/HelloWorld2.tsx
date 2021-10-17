@@ -16,7 +16,7 @@ export interface IHelloWordStates {
   idade: string,
 }
 
-export default class HelloWorld2 extends React.Component<IHelloWorld2Props, IHelloWordStates, {}> {
+export default class HelloWorld2gulp extends React.Component<IHelloWorld2Props, IHelloWordStates, {}> {
 
   constructor(props) {
     super(props);
@@ -45,10 +45,7 @@ export default class HelloWorld2 extends React.Component<IHelloWorld2Props, IHel
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Created</th>
-              <th scope="col">Actions</th>
+              <th scope="col">Register on our website</th>
             </tr>
           </thead>
           <tbody>
@@ -70,7 +67,7 @@ export default class HelloWorld2 extends React.Component<IHelloWorld2Props, IHel
 
           </tbody>
         </table>
-        <Form />
+        <Form listID={this.props.lists} />
       </div>
     )
   }

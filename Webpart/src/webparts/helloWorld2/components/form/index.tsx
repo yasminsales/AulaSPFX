@@ -1,18 +1,35 @@
 import * as React from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+import { setVirtualParent } from '@fluentui/dom-utilities';
+
 type Inputs = {
+    FirstName: string,
+    LastName: string,
     Title: string,
     Description: string,
 };
 
-export default function Form() {
+export default function Form(props) {
 
     const { register, handleSubmit, watch, errors } = useForm<Inputs>();
 
     console.log(watch());
 
-    const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+    const onSubmit = data => {
+        sp.web.lists.getByTitle('Colaboradores').items.add(data).then(res => {
+            console.log("Item adicionado à lista");
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
+
+        console.log("Dados:" + data);
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -22,7 +39,7 @@ export default function Form() {
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputLastName1" className="form-label">Last name</label>
-                <input ref={register({ required: true, maxLength: 50 })} name="First name" type="name" className="form-control" id="exampleInputFirstName1"></input>
+                <input ref={register({ required: true, maxLength: 50 })} name="First name" type="name" className="form-control" id="exampleInputLastName1"></input>
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
